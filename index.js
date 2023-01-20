@@ -1,5 +1,6 @@
 const express = require("express");
 const connect = require("./db/db");
+require("dotenv").config()
 const signupRoute = require("./routes/signup.route");
 const loginRoute = require("./routes/login.route");
 const todoRoute = require("./routes/todo.route");
@@ -14,7 +15,7 @@ app.use("/todos", todoRoute);
 
 app.get("/", (req, res) => res.send("hello"));
 
-app.listen(8080, async () => {
+app.listen(process.env.PORT, async () => {
   await connect();
-  console.log("server started on port 8080");
+  console.log("server started on port 8000");
 });
